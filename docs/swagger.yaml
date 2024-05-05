@@ -1,0 +1,41 @@
+basePath: /
+host: localhost:8081
+info:
+  contact:
+    email: yarik1448kuzmin@gmail.com
+    name: Yaroslav Kuzmin
+  description: Сервис имитирует передачу данных через ненадёжную сеть с защитой данных
+    с помощью кодировки Хэмминга [15, 11].
+  title: КР СТ АСОИУ Сервис Канального Уровня
+  version: 0.1.0
+paths:
+  /code:
+    post:
+      consumes:
+      - application/json
+      description: Осуществляет кодировку сообщения в код Хэмминга [15, 11], внесение
+        ошибки в каждый закодированный 15-битовый кадр с вероятностью 7%, исправление
+        внесённых ошибок, раскодировку кадров в изначальное сообщение. Затем отправляет
+        результат в Procuder-сервис транспортного уровня. Сообщение может быть потеряно
+        с вероятностью 1%.
+      parameters:
+      - description: Сообщение
+        in: body
+        name: request
+        required: true
+        schema:
+          items:
+            type: integer
+          type: array
+      responses:
+        "200":
+          description: Кодировка и отправка запущены
+        "400":
+          description: Ошибка при чтении сообщения
+      summary: Code network flow
+      tags:
+      - Code
+schemes:
+- https
+- http
+swagger: "2.0"
