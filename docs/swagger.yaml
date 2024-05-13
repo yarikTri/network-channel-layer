@@ -1,4 +1,18 @@
 basePath: /
+definitions:
+  http.CodeRequest:
+    properties:
+      message:
+        items:
+          type: integer
+        type: array
+      part_message_id:
+        type: integer
+      sender:
+        type: integer
+      timestamp:
+        type: integer
+    type: object
 host: localhost:8081
 info:
   contact:
@@ -19,17 +33,17 @@ paths:
         результат в Procuder-сервис транспортного уровня. Сообщение может быть потеряно
         с вероятностью 1%.
       parameters:
-      - description: Сообщение
+      - description: Информация о сегменте сообщения
         in: body
         name: request
         required: true
         schema:
-          items:
-            type: integer
-          type: array
+          $ref: '#/definitions/http.CodeRequest'
+      produces:
+      - application/json
       responses:
         "200":
-          description: Кодировка и отправка запущены
+          description: Обработка и отправка запущены
         "400":
           description: Ошибка при чтении сообщения
       summary: Code network flow

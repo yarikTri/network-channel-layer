@@ -22,31 +22,53 @@
                 "consumes": [
                     "application/json"
                 ],
+                "produces": [
+                    "application/json"
+                ],
                 "tags": [
                     "Code"
                 ],
                 "summary": "Code network flow",
                 "parameters": [
                     {
-                        "description": "Сообщение",
+                        "description": "Информация о сегменте сообщения",
                         "name": "request",
                         "in": "body",
                         "required": true,
                         "schema": {
-                            "type": "array",
-                            "items": {
-                                "type": "integer"
-                            }
+                            "$ref": "#/definitions/http.CodeRequest"
                         }
                     }
                 ],
                 "responses": {
                     "200": {
-                        "description": "Кодировка и отправка запущены"
+                        "description": "Обработка и отправка запущены"
                     },
                     "400": {
                         "description": "Ошибка при чтении сообщения"
                     }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "http.CodeRequest": {
+            "type": "object",
+            "properties": {
+                "message": {
+                    "type": "array",
+                    "items": {
+                        "type": "integer"
+                    }
+                },
+                "part_message_id": {
+                    "type": "integer"
+                },
+                "sender": {
+                    "type": "integer"
+                },
+                "timestamp": {
+                    "type": "integer"
                 }
             }
         }
