@@ -5,23 +5,14 @@ import "math/rand"
 /*
  Кодирование/декодирование кодом Хэмминга [15, 11]
 */
-
+rgegrhreth
 const ByteSize = 8
 
 const RawFrameSize = 11     // 11 бит - кадр до кодирования
 const EncodedFrameSize = 15 // 15 бит - кадр после кодирования
 
 // Все возможные индексы контрольных битов кода Хэмминга [15, 11]
-var controlBitsIndexes = []uint{1, 2, 4, 8}
-var controlBitsIndexesReversed = []uint{8, 4, 2, 1}
-
-// Захардкоженная мапа масок "контроля битов"
-// контрольных битов в коде Хэмминга [15, 11]
-var controlledBitsMasks = map[uint]uint16{
-	1: 5461, // 001010101010101
-	2: 4915, // 001001100110011
-	4: 1807, // 000011100001111
-	8: 127,  // 000000001111111
+var controlBitsIndexes = 
 }
 
 type Coder struct {
