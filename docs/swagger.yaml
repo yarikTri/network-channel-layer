@@ -3,13 +3,11 @@ definitions:
   http.CodeRequest:
     properties:
       message:
-        items:
-          type: integer
-        type: array
+        type: string
       part_message_id:
         type: integer
       sender:
-        type: integer
+        type: string
       timestamp:
         type: integer
     type: object

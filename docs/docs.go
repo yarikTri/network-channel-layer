@@ -58,16 +58,13 @@ const docTemplate = `{
             "type": "object",
             "properties": {
                 "message": {
-                    "type": "array",
-                    "items": {
-                        "type": "integer"
-                    }
+                    "type": "string"
                 },
                 "part_message_id": {
                     "type": "integer"
                 },
                 "sender": {
-                    "type": "integer"
+                    "type": "string"
                 },
                 "timestamp": {
                     "type": "integer"
