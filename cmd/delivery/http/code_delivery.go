@@ -18,17 +18,17 @@ const frameErrorProbability = 7
 const transferEndpoint = "http://localhost:8080/encoded-message/transfer"
 
 type CodeRequest struct {
-	Sender        uint32 `json:"sender"`
+	Sender        string `json:"sender"`
 	Timestamp     uint32 `json:"timestamp"`
 	PartMessageID uint32 `json:"part_message_id"`
-	Message       []byte `json:"message"`
+	Message       string `json:"message"`
 }
 
 type CodeTransferRequest struct {
-	Sender        uint32 `json:"sender"`
+	Sender        string `json:"sender"`
 	Timestamp     uint32 `json:"timestamp"`
 	PartMessageID uint32 `json:"part_message_id"`
-	Message       []byte `json:"message"`
+	Message       string `json:"message"`
 	FlagError     bool   `json:"flag_error"`
 }
 
@@ -44,7 +44,8 @@ type CodeTransferRequest struct {
 // @Router		/code [post]
 func Code(c *gin.Context) {
 	var codeRequest CodeRequest
-	if err := c.Bind(codeRequest); err != nil {
+	if err := c.Bind(&codeRequest); err != nil {
+		fmt.Println(err.Error())
 		c.Data(http.StatusBadRequest, c.ContentType(), []byte("Can't read request body"))
 		return
 	}
@@ -60,7 +61,7 @@ func transfer(codeRequest CodeRequest) {
 		return
 	}
 
-	processedMessage, hasErrors, err := processMessage(codeRequest.Message)
+	processedMessage, hasErrors, err := processMessage([]byte(codeRequest.Message))
 	if err != nil {
 		fmt.Printf("[Error] Error while processing message: %s\n", err.Error())
 		return
@@ -72,7 +73,7 @@ func transfer(codeRequest CodeRequest) {
 			Sender:        codeRequest.Sender,
 			Timestamp:     codeRequest.Timestamp,
 			PartMessageID: codeRequest.PartMessageID,
-			Message:       processedMessage,
+			Message:       string(processedMessage),
 			FlagError:     hasErrors,
 		},
 	)
