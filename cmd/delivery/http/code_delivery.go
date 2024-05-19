@@ -50,7 +50,7 @@ func Code(c *gin.Context) {
 		return
 	}
 
-	fmt.Printf("Got request: %v", codeRequest)
+	fmt.Printf("Got request: %v\n", codeRequest)
 
 	go transfer(codeRequest)
 
