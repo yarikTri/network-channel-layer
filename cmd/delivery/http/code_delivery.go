@@ -97,7 +97,7 @@ func transfer(codeRequest CodeRequest) {
 	defer resp.Body.Close()
 
 	if resp.StatusCode != http.StatusOK {
-		fmt.Printf("[Info] Unexpected status code while transferring %d\n", resp.StatusCode)
+		fmt.Printf("[Info] Unexpected status code [%d] while transferring: %s\n", resp.StatusCode, err.Error())
 	}
 }
 
