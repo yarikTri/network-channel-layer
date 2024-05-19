@@ -98,7 +98,9 @@ func transfer(codeRequest CodeRequest) {
 
 	if resp.StatusCode != http.StatusOK {
 		fmt.Printf("[Info] Unexpected status code [%d] while transferring: %s\n", resp.StatusCode, err.Error())
+		return
 	}
+	fmt.Println("[Info] Message successfully transferred")
 }
 
 // Возвращает декодированные биты (в случае успеха), флаг ошибки декодирования
