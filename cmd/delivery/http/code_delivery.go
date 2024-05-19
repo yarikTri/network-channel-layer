@@ -50,6 +50,8 @@ func Code(c *gin.Context) {
 		return
 	}
 
+	fmt.Printf("Got request: %v", codeRequest)
+
 	go transfer(codeRequest)
 
 	c.Data(http.StatusOK, c.ContentType(), []byte{})
