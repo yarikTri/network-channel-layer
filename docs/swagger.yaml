@@ -10,8 +10,10 @@ definitions:
         type: string
       timestamp:
         type: integer
+      total:
+        type: integer
     type: object
-host: localhost:8081
+host: localhost:8082
 info:
   contact:
     email: yarik1448kuzmin@gmail.com

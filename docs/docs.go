@@ -68,6 +68,9 @@ const docTemplate = `{
                 },
                 "timestamp": {
                     "type": "integer"
+                },
+                "total": {
+                    "type": "integer"
                 }
             }
         }
@@ -77,7 +80,7 @@ const docTemplate = `{
 // SwaggerInfo holds exported Swagger Info so clients can modify it
 var SwaggerInfo = &swag.Spec{
 	Version:          "0.1.0",
-	Host:             "localhost:8081",
+	Host:             "localhost:8082",
 	BasePath:         "/",
 	Schemes:          []string{"https", "http"},
 	Title:            "КР СТ АСОИУ Сервис Канального Уровня",

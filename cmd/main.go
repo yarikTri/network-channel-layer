@@ -26,12 +26,12 @@ import (
 // @contact.name   Yaroslav Kuzmin
 // @contact.email  yarik1448kuzmin@gmail.com
 
-// @host localhost:8081
+// @host localhost:8082
 // @schemes https http
 // @BasePath /
 
 func main() {
-	listenEndpoint := "localhost:8081"
+	listenEndpoint := "localhost:8082"
 
 	reqIdGetterMock := func(context.Context) (uint32, error) { return 0, nil }
 	flogger, err := flog.NewFLogger(reqIdGetterMock)
