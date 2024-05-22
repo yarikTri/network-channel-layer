@@ -21,6 +21,7 @@ type CodeRequest struct {
 	Sender        string `json:"sender"`
 	Timestamp     uint32 `json:"timestamp"`
 	PartMessageID uint32 `json:"part_message_id"`
+	Total         uint32 `json:"total"`
 	Message       string `json:"message"`
 }
 
@@ -28,6 +29,7 @@ type CodeTransferRequest struct {
 	Sender        string `json:"sender"`
 	Timestamp     uint32 `json:"timestamp"`
 	PartMessageID uint32 `json:"part_message_id"`
+	Total         uint32 `json:"total"`
 	Message       string `json:"message"`
 	FlagError     bool   `json:"flag_error"`
 }
@@ -75,6 +77,7 @@ func transfer(codeRequest CodeRequest) {
 			Sender:        codeRequest.Sender,
 			Timestamp:     codeRequest.Timestamp,
 			PartMessageID: codeRequest.PartMessageID,
+			Total:         codeRequest.Total,
 			Message:       string(processedMessage),
 			FlagError:     hasErrors,
 		},
