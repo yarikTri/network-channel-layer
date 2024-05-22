@@ -19,7 +19,7 @@ const transferEndpoint = "http://localhost:8080/encoded-message/transfer"
 
 type CodeRequest struct {
 	Sender        string `json:"sender"`
-	Timestamp     uint32 `json:"timestamp"`
+	Timestamp     uint64 `json:"timestamp"`
 	PartMessageID uint32 `json:"part_message_id"`
 	Total         uint32 `json:"total"`
 	Message       string `json:"message"`
@@ -27,7 +27,7 @@ type CodeRequest struct {
 
 type CodeTransferRequest struct {
 	Sender        string `json:"sender"`
-	Timestamp     uint32 `json:"timestamp"`
+	Timestamp     uint64 `json:"timestamp"`
 	PartMessageID uint32 `json:"part_message_id"`
 	Total         uint32 `json:"total"`
 	Message       string `json:"message"`
